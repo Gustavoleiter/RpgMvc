@@ -11,10 +11,10 @@ namespace RpgMvc.Controllers
 {
     public class PersonagensController : Controller
     {
-    public string uriBase = "http://www.gustavoleite.somee.com/RpgApi/Personagens/";
+    public string uriBase = "http://gustavoleite.somee.com/RpgApi/Personagens/";
 
     [HttpGet]
-    public async Task<ActionResult> IndexAsync()
+    public async Task<IActionResult> IndexAsync()
     {
         try{
             string uriComplementar = "GetAll";
@@ -44,7 +44,7 @@ namespace RpgMvc.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult> CreateAsync(PersonagemViewModel p)
+    public async Task<IActionResult> CreateAsync(PersonagemViewModel p)
     {
         try
         {
@@ -116,7 +116,7 @@ namespace RpgMvc.Controllers
             {
                 HttpClient httpClient = new HttpClient();
                 string token = HttpContext.Session.GetString("SessionTokenUsuario");
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Berer", token);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage response = await httpClient.GetAsync(uriBase + id.ToString());
                 string serialized = await response.Content.ReadAsStringAsync();
                 
@@ -142,7 +142,7 @@ namespace RpgMvc.Controllers
             {
                 HttpClient httpClient = new HttpClient();
                 string token = HttpContext.Session.GetString("SessionTokenUsuario");
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Berer", token);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 var content = new StringContent(JsonConvert.SerializeObject(p));
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 HttpResponseMessage response = await httpClient.PutAsync(uriBase, content);
@@ -171,7 +171,7 @@ namespace RpgMvc.Controllers
             {
                 HttpClient httpClient = new HttpClient();
                 string token = HttpContext.Session.GetString("SessionTokenUsuario");
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Berer", token);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage response = await httpClient.DeleteAsync(uriBase + id.ToString());
                 string serialized = await response.Content.ReadAsStringAsync();
                 
