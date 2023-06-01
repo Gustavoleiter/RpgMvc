@@ -1,0 +1,51 @@
+@model IEnumerable<RpgMvc.Models.PersonagemViewModel>
+
+@{ViewBag.Title = "Personagens"; }
+<h2>Relação de Personagens</h2>
+<p>
+    @Html.ActionLink("Criar Novo Personagem", "Create")
+</p>
+<table class="table table-striped">
+    <tr class="table-primary">
+        <th>@Html.DisplayNameFor(model => model.Id)</th>
+        <th>@Html.DisplayNameFor(model => model.Nome)</th>
+        <th>@Html.DisplayNameFor(model => model.Classe)</th>
+        <th>@Html.DisplayNameFor(model => model.PontosVida)</th>
+        <th>@Html.DisplayNameFor(model => model.Disputas)</th>
+        <th>@Html.DisplayNameFor(model => model.Vitorias)</th>
+        <th>@Html.DisplayNameFor(model => model.Derrotas)</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr scope="row">
+            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+            <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+            <td>@Html.DisplayFor(modelItem => item.Classe)</td>
+            <td>@Html.DisplayFor(modelItem => item.PontosVida)</td>
+            <td>@Html.DisplayFor(modelItem => item.Disputas)</td>
+            <td>@Html.DisplayFor(modelItem => item.Vitorias)</td>
+            <td>@Html.DisplayFor(modelItem => item.Derrotas)</td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id } ) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Deletar", "Delete", new { id = item.Id } 
+                    ,new { onclick = "return confirm('Deseja realmente deletar este personagem ?');"}) |
+                @Html.ActionLink("Listar Habilidades", "Index", "PersonagemHabilidades", new {id = item.Id}) |
+                @Html.ActionLink("Atribuir Habilidade", "Create", "PersonagemHabilidades", new {id = item.Id, nome = item.Nome})|
+                @Html.ActionLink("Restaurar Pontos Vida", "RestaurarPontosVida",  new {id = item.Id}, new { onclick = return confirm("Deseja realmente restaurar pontos de vida ?");}) |
+                @Html.ActionLink("Listar Habilidades", "Index", "PersonagemHabilidades", new {id = item.Id}, new { onclick = return confirm("Deseja realmente zerar ranking ?");}) 
+            </td>
+        </tr>        
+    }
+</table>
+@Html.ActionLink("Embate com armas!!!", "Index", "Disputas", null, new { @class = "btn btn-warning" })
+
+@Html.ActionLink("Embate com habilidades!!!", "IndexHabilidades", "Disputas", null, new { @class = "btn btn-dark" })
+
+@Html.ActionLink("Embate em grupo!!!", "DisputaGeral", "Disputas", null, new { @class = "btn btn-danger" })
+
+@Html.ActionLink("Zerar ranking e Restaurar pontos vida", "ZerarRankingRestaurarVidas", "Personagens",
+null, new { @class = "btn btn-secondary", onclick = "return confirm('Deseja realmente realizar esta ação ?');" }) 
+
