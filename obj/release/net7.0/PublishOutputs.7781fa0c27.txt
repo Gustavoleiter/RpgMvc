@@ -1,0 +1,8 @@
+C:\Users\EtecHAS\Desktop\Nova pasta\RpgMvc\Publish\RpgMvc.exe
+C:\Users\EtecHAS\Desktop\Nova pasta\RpgMvc\Publish\appsettings.Development.json
+C:\Users\EtecHAS\Desktop\Nova pasta\RpgMvc\Publish\appsettings.json
+C:\Users\EtecHAS\Desktop\Nova pasta\RpgMvc\Publish\RpgMvc.dll
+C:\Users\EtecHAS\Desktop\Nova pasta\RpgMvc\Publish\RpgMvc.deps.json
+C:\Users\EtecHAS\Desktop\Nova pasta\RpgMvc\Publish\RpgMvc.runtimeconfig.json
+C:\Users\EtecHAS\Desktop\Nova pasta\RpgMvc\Publish\RpgMvc.pdb
+C:\Users\EtecHAS\Desktop\Nova pasta\RpgMvc\Publish\Newtonsoft.Json.dll

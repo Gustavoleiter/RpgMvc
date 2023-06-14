@@ -2,6 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
 builder.Services.AddSession(options =>
 {
 options.IdleTimeout = System.TimeSpan.FromSeconds(3600);
@@ -23,6 +24,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
 app.UseSession();
 
 app.MapControllerRoute(

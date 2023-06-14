@@ -1,0 +1,25 @@
+@model RpgMvc.Models.ArmaViewModel
+@{
+    ViewBag.Title = "Detalhes do Arma";
+}
+<h2>Detalhes do Arma</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.Id)</dt>
+        <dd>@Html.DisplayFor(model => model.Id)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Nome)</dt>
+        <dd>@Html.DisplayFor(model => model.Nome)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Dano)</dt>
+        <dd>@Html.DisplayFor(model => model.Dano)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.PersonagemId)</dt>
+        <dd>@Html.DisplayFor(model => model.PersonagemId)</dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id}) |
+    @Html.ActionLink("Retornar", "Index")
+</p>

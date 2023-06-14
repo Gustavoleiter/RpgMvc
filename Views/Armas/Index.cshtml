@@ -1,0 +1,44 @@
+@model IEnumerable<RpgMvc.Models.ArmaViewModel>
+
+@{ViewBag.Title = "Arma"; }
+@if (@TempData["Mensagem"] != null)
+{
+    <div class="alert alert-success" role="alert">
+          @Html.Raw(TempData["Mensagem"])</div>
+}
+@if (@TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @Html.Raw(TempData["MensagemErro"])</div>
+}
+<h2>Relação de Armas</h2>
+<p>
+    @Html.ActionLink("Criar Nova Arma", "Create")
+</p>
+<table class="table table-striped" style="width: 600px;">
+    <tr class="table-primary">
+        <th>@Html.DisplayNameFor(model => model.Id)</th>
+        <th>@Html.DisplayNameFor(model => model.Nome)</th>
+        <th>@Html.DisplayNameFor(model => model.Dano)</th>
+        <th>@Html.DisplayNameFor(model => model.PersonagemId)</th> 
+    </tr>
+
+
+
+
+@foreach (var item in Model)
+    {
+        <tr scope="row">
+            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+            <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+            <td>@Html.DisplayFor(modelItem => item.Dano)</td>
+            <td>@Html.DisplayFor(modelItem => item.PersonagemId)</td>
+            <td> 
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id } ) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Deletar", "Delete", new { id = item.Id } 
+                ,new { onclick = "return confirm('Deseja realmente deletar esta Arma ?');"})
+            </td> 
+       </tr>        
+    }
+</table>
